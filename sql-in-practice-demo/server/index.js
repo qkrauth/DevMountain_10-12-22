@@ -4,7 +4,7 @@ const app = express()
 const cors = require('cors')
 const {SERVER_PORT} = process.env
 const {seed} = require('./seed.js')
-const {getUserInfo, updateUserInfo, getUserAppt, requestAppointment} = require('./controller.js')
+const {getUserInfo, getOneUser, deleteUser, updateUserInfo, getUserAppt, requestAppointment, postUser} = require('./controller.js')
 
 app.use(express.json())
 app.use(cors())
@@ -13,7 +13,10 @@ app.use(cors())
 app.post('/seed', seed)
 
 // USER
-app.get('/user', getUserInfo)
+app.get('/user', getUserInfo);
+app.get('/oneuser', getOneUser);
+app.post('/user', postUser)
+app.delete('/user/:id', deleteUser)
 // app.put('/user', updateUserInfo)
 
 // APPOINTMENTS
