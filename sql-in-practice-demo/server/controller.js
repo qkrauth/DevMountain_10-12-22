@@ -20,12 +20,12 @@ module.exports = {
         FROM cc_clients
         JOIN cc_users
         ON cc_users.user_id = cc_clients.user_id
-        WHERE cc_users.user_id = ${userId}
+        WHERE cc_users.user_id = ${userId};
         `)
         .then(dbRes => {
             console.log(dbRes);
-            res.send(dbRes[0])
+            res.status(200).send(dbRes[0]);
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
     }
 }
